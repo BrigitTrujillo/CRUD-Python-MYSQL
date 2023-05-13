@@ -13,7 +13,7 @@ app.config['MYSQL_DB'] = 'productos'
 
 mysql = MySQL(app)
 
-@app.route('/')
+@app.route('/productos')
 def Index():
     cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM productos")
@@ -22,6 +22,9 @@ def Index():
 
     return render_template('index.html', students=data)
 
+@app.route('/')
+def inicio():
+    return render_template('inicio.html')
 
 @app.route('/insert', methods = ['POST'])
 def insert():
